@@ -1,6 +1,13 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { App } from './app/app';
+import { provideHttpClient } from '@angular/common/http';
+import { appConfig } from './app/app.config';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(App, {
+  ...appConfig,                // mantienes tu configuración existente
+  providers: [
+    ...(appConfig.providers || []), // preserva otros providers si existen
+    provideHttpClient()              // 👈 agrega HttpClient para servicios
+  ]
+})
+.catch((err) => console.error(err));
