@@ -18,8 +18,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">
+          <a class="nav-link" routerLink="/usuarios" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             Usuarios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/usuarios/crear" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Crear
           </a>
         </li>
       </ul>

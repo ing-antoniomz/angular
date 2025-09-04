@@ -24,4 +24,8 @@ export class UsuariosService {
   getUsuarios(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);
   }
+
+  createUsuario(usuario: Partial<User & { password: string }>) {
+    return this.http.post<User>(this.apiUrl, usuario);
+  }
 }

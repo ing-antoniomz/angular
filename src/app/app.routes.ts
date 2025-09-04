@@ -8,10 +8,20 @@ export const routes: Routes = [
   },
   {
     path: 'usuarios',
-    loadComponent: () =>
-      import('./pages/usuarios/usuarios').then(
-        (m) => m.Usuarios
-      ),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/usuarios/usuarios').then((m) => m.Usuarios),
+      },
+      {
+        path: 'crear',
+        loadComponent: () =>
+          import('./pages/usuarios-create/usuarios-create').then(
+            (m) => m.UsuariosCreate
+          ),
+      }
+    ]
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '' }
 ];
