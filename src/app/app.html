@@ -27,6 +27,15 @@
             Crear
           </a>
         </li>
+        <!-- Mostrar Login si no hay token -->
+        <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+
+        <!-- Mostrar Logout si hay token -->
+        <li class="nav-item" *ngIf="auth.isLoggedIn()">
+          <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+        </li>
       </ul>
     </div>
   </div>
