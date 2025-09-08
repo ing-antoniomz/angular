@@ -27,7 +27,7 @@ export class UsuariosCreate {
 
   crearUsuario() {
     const nuevoUsuario: any = {
-      user: this.user,
+      username: this.user,
       nombre: this.nombre,
       apellidoPaterno: this.apellidoPaterno,
       apellidoMaterno: this.apellidoMaterno,
