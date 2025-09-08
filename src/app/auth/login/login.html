@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
   <div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
     <h2 class="text-center mb-4">Iniciar Sesión</h2>
     <form (ngSubmit)="onSubmit()">
@@ -11,9 +11,7 @@
         <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required />
       </div>
       <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-      <div NgIf="errorMessage" class="text-danger mt-2 text-center">
-        {{ errorMessage }}
-      </div>
+      <div *ngIf="errorMessage" class="text-danger mt-2 text-center">{{ errorMessage }}</div>
     </form>
   </div>
 </div>

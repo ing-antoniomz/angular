@@ -1,36 +1,47 @@
-<h2>Lista de Usuarios</h2>
+<div class="card mt-4 shadow px-5">
+  <div class="card-header text-dark mt-3">
+    <h4 class="mb-0">Lista de Usuarios</h4>
+  </div>
+  <div class="card-body">
+    <div *ngIf="cargando" class="alert alert-info">
+      Cargando usuarios...
+    </div>
 
-<div *ngIf="cargando" class="alert alert-info">
-  Cargando usuarios...
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <div *ngIf="!cargando && !error" class="table-responsive">
+      <table class="table table-striped table-bordered mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Apellido P</th>
+            <th>Apellido M</th>
+            <th>Cuenta</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of usuarios">
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td> <!-- Internamente sigue siendo 'user' -->
+            <td>{{ u.email || '-' }}</td>
+            <td>{{ u.nombre }}</td>
+            <td>{{ u.apellidoPaterno }}</td>
+            <td>{{ u.apellidoMaterno }}</td>
+            <td>{{ u.cuentaAp }}</td>
+            <td>
+              <span class="badge" [ngClass]="u.status ? 'bg-success' : 'bg-danger'">
+                {{ u.status ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<div *ngIf="error" class="alert alert-danger">
-  {{ error }}
-</div>
-
-<table *ngIf="!cargando && !error" class="table table-striped table-bordered">
-  <thead class="table-dark">
-    <tr>
-      <th>ID</th>
-      <th>Usuario</th>
-      <th>Email</th>
-      <th>Nombre</th>
-      <th>Apellido P</th>
-      <th>Apellido M</th>
-      <th>Cuenta</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let u of usuarios">
-      <td>{{ u.id }}</td>
-      <td>{{ u.username }}</td>
-      <td>{{ u.email || '-' }}</td>
-      <td>{{ u.nombre }}</td>
-      <td>{{ u.apellidoPaterno }}</td>
-      <td>{{ u.apellidoMaterno }}</td>
-      <td>{{ u.cuentaAp }}</td>
-      <td>{{ u.status }}</td>
-    </tr>
-  </tbody>
-</table>
