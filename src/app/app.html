@@ -29,19 +29,21 @@
             Crear
           </a>
         </li>
-        <!-- Mostrar Login si no hay token -->
         <li class="nav-item" *ngIf="!auth.isLoggedIn()">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
-
-        <!-- Mostrar Logout si hay token -->
         <li class="nav-item" *ngIf="auth.isLoggedIn()">
           <button class="btn btn-outline-light" (click)="logout()">Logout</button>
         </li>
       </ul>
 
-      <!-- Aquí van el contador y los botones -->
-      <div class="d-flex align-items-center gap-2">
+      <!-- Contador, botones y notificación -->
+      <div class="d-flex align-items-center gap-2 position-relative">
+        <!-- Notificación -->
+        <span *ngIf="usuariosService.notification()" class="badge bg-success me-2">
+          {{ usuariosService.notification() }}
+        </span>
+
         <app-counter-display></app-counter-display>
         <app-counter-buttons></app-counter-buttons>
       </div>
