@@ -6,12 +6,14 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class Auth {
-  private apiUrl = 'http://localhost:3000/auth/login';
+  private loginUrl = 'http://localhost:3000/api/auth/login';
+  private logoutUrl = 'http://localhost:3000/api/auth/logout';
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<{ access_token: string }>(`${this.apiUrl}`, { username, password })
+
+    return this.http.post<{ access_token: string }>(`${this.loginUrl}`, { username, password })
       .pipe(
         tap(response => {
           localStorage.setItem('token', response.access_token);
@@ -21,6 +23,7 @@ export class Auth {
 
   logout() {
     localStorage.removeItem('token');
+    this.http.post<{ access_token: string }>(`${this.logoutUrl}`,{});
   }
 
   getToken(): string | null {

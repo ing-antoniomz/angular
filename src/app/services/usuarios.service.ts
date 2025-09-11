@@ -17,7 +17,7 @@ export interface User {
   providedIn: 'root'
 })
 export class UsuariosService {
-  private apiUrl = 'http://localhost:3000/usuarios/';
+  private apiUrl = 'http://localhost:3000/api/usuarios/';
 
   // Signal para notificaciones
   notification = signal<string | null>(null);

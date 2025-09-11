@@ -19,7 +19,7 @@ export class Logint {
 
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/usuarios']),
+      next: () => this.router.navigate(['/']),
       error: (err) => {
         console.error(err);
         this.errorMessage = 'Credenciales inválidas';
